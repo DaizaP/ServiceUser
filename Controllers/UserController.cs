@@ -45,9 +45,9 @@ namespace ServiceUser.Controllers
         [HttpPost("DelUser")]
         public IActionResult DelUser([FromBody] string userEmail)
         {
+            var userid = HttpContext.User.Claims.Where(x => x.Type == "UserId").Select(c => c.Value).SingleOrDefault();
             try
             {
-                var userid = HttpContext.User.Claims.Where(x => x.Type == "UserId").Select(c => c.Value).SingleOrDefault();
                 var res = _userService.DeleteUser(userEmail, new Guid(userid));
                 if (res)
                 {

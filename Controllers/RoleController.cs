@@ -19,7 +19,7 @@ namespace ServiceUser.Controllers
 
         //создаем этим методом начальные роли
         [AllowAnonymous]
-        [HttpPost("GetRoles")]
+        [HttpGet("GetRoles")]
         public IActionResult GetRoles()
         {
             var res = _roleService.GetRoles();
